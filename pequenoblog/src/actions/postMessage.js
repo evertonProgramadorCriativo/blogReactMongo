@@ -10,8 +10,7 @@ export  const ACTION_TYPES = {
 export const fetchAll = () => dispatch => {
   
   api.postMessage().fetchAll().then(res => {
-      console.log(res)
-      dispatch({
+       dispatch({
         type: ACTION_TYPES.FETCH_ALL,
         payload: res.data
       })

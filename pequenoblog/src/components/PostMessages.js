@@ -6,11 +6,11 @@ import {
   Paper,
   withStyles,
   Typography,
-  List,
-  Divider,
-  ListItem,
-  ListItemText,
+  Divider
 } from "@material-ui/core";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
 import PostMessageForm from "./PostMessageForm";
 
 const styles = (theme) => ({
@@ -40,7 +40,7 @@ const PostMessages = ({ classes, ...props }) => {
           <List>
             {props.postMessageList.map((record, index) => {
               return (
-                <Fragment>
+                <Fragment key={index}>
                   <ListItem>
                     <ListItemText>
                       <Typography variant="n5">{record.title}</Typography>
