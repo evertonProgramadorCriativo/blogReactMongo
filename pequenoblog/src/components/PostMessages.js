@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useEffect, useState} from "react";
 import { connect } from "react-redux";
-import * as actions from "../actions/postMessage";
+import * as actions from "../actions/postMessage.js";
 
 const PostMessages = (props) => {
-  return <div> from PostMessages</div>;
-};
+  //const [x, setX] = useState(0)
+  //setX(5)
 
-const mapStateToProps = (state) => ({
-  postMessageList: state.postMesssage.list,
-});
+  useEffect(() => {
+     props.fetchAllPostMessages()
+  }, [])
+
+  return ( <div> from PostMessages</div> );
+}
+
+const mapStateToProps = state => ({
+  postMessageList: state.postMessage.list
+})
 
 const mapActionToProps = {
-  fetchAllPostMessages: actions.fetchAll,
-};
+  fetchAllPostMessages: actions.fetchAll
+}
 export default connect(mapStateToProps, mapActionToProps)(PostMessages);

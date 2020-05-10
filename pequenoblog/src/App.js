@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./logo.svg";
+//import logo from "./logo.svg";
 import "./App.css";
 import PostMessages from "./components/PostMessages";
 import { Provider } from "react-redux";
