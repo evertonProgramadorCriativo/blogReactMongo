@@ -32,6 +32,9 @@ const PostMessagesFrom = ({ classes, ...props }) => {
     let temp = {...errors}
     temp.title = values.title?"":"This field is required."
     temp.message = values.message?"":"This field is required."
+    setErrors({
+      ...temp
+    })
     return Object.values(temp).every( x => x == "")
 
   }
@@ -60,6 +63,7 @@ const PostMessagesFrom = ({ classes, ...props }) => {
         fullWidth
         value={values.title}
         onChange={handleInputChange}
+        {...(errors.title && {error:true,helperText:errors.title})}
       />
 
       <TextField
@@ -71,6 +75,7 @@ const PostMessagesFrom = ({ classes, ...props }) => {
         rows={4}
         value={values.message}
         onChange={handleInputChange}
+        {...(errors.message && {error:true,helperText:errors.message})}
       />  
        <Button
        variant="contained"
