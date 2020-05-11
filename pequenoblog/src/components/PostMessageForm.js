@@ -40,7 +40,8 @@ const PostMessagesFrom = ({ classes, ...props }) => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    console.log(values)
+    if (validade())
+    window.alert('validation succeeded.')
   }
 
   return (
