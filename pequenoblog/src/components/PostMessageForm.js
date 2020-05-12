@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { TextField, withStyles, Button } from "@material-ui/core";
 import useFrom from "./useForm";
-
+import { connect } from "react-redux";
+import * as actions from "../actions/postMessage";
 const initialFieldValues = {
   title: "",
   message: ""
@@ -43,8 +44,9 @@ const PostMessagesFrom = ({ classes, ...props }) => {
 
   const handleSubmit = e => {
     e.preventDefault()
+    const onSuccess = () => { window.alert('validation succeeded.') }
     if (validade())
-    window.alert('validation succeeded.')
+    props.createPostMessage(values, onSuccess)
   }
 
   return (
@@ -89,4 +91,13 @@ const PostMessagesFrom = ({ classes, ...props }) => {
   );
 };
 
-export default withStyles(styles)(PostMessagesFrom);
+const mapStateToProps = state => ({
+  postMessageList: state.postMessage.list
+})
+
+const mapActionToProps = {
+  createPostMessage: actions.create,
+  updatePostMessage: actions.update
+}
+
+export default connect(mapStateToProps, mapActionToProps)(withStyles(styles)(PostMessagesFrom));
