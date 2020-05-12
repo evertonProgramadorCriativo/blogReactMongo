@@ -48,3 +48,17 @@ export const update = (id,data, onSuccess) => dispatch => {
     })
     .catch((err) => console.log(err));
 };
+
+export const Delete = (id, onSuccess) => dispatch => {
+  api
+    .postMessage()
+    .delete(id)
+    .then( res => {
+      dispatch({
+        type: ACTION_TYPES.DELETE,
+        payload: id,
+      });
+      onSuccess()
+    })
+    .catch((err) => console.log(err));
+};
